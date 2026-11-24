@@ -43,6 +43,8 @@ public class Player : MonoBehaviour
         float vertical = Input.GetAxis("Vertical");
         float horizontal = Input.GetAxis("Horizontal");
 
+        transform.Translate(_moveSpeed * Time.deltaTime * new Vector3(horizontal, 0, vertical));
+
 
         // This rotates the ball as you move.
         // You don't need to change this code.
