@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float _jump;
     [SerializeField] private float _mouseSensitivity;
 
-    private Transform _cameraTrans;
+    private Transform _cameraArmTrans;
     private float _rotationX;
     private float _rotationY;
     private bool _isGrounded;
@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        _cameraTrans = Camera.main.transform;
+        _cameraArmTrans = Camera.main.transform.parent;
     }
 
     // ------------------------------------------------------------------------
@@ -35,14 +35,14 @@ public class Player : MonoBehaviour
         float mouseX = Input.GetAxis("Mouse X");
         _rotationX += mouseX * _mouseSensitivity;
 
-        _cameraTrans.localEulerAngles = new Vector3(-_rotationY, 0, 0);
+        _cameraArmTrans.localEulerAngles = new Vector3(-_rotationY, 0, 0);
         transform.localEulerAngles = new Vector3(0, _rotationX, 0);
 
         // Code the player's left/right movement and jump using the veritcal
         //      and horizontal input.
         float vertical = Input.GetAxis("Vertical");
         float horizontal = Input.GetAxis("Horizontal");
-        
+
 
         // This rotates the ball as you move.
         // You don't need to change this code.
